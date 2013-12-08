@@ -1,0 +1,16 @@
+name = Schemax Migrate (Sports)
+description = Faciliates ETL operations using the migrate module
+core = 7.x
+package = Schemax
+version = 7.x-1.0-alpha1
+project = schemax_migrate_sports
+
+;dependencies
+dependencies[] = migrate
+
+;files
+files[] = schemax_migrate_sports.migrate.inc
+files[] = includes/base.inc
+files[] = includes/player.inc
+files[] = includes/team.inc
+;files[] = includes/team_1.inc
