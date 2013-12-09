@@ -26,7 +26,12 @@ class SchemaxSportsMigrationTeam2 extends SchemaxSportsMigration {
     $this->destination = new MigrateDestinationNode('schemax_team');
 
     $this->addFieldMapping('title', 'NAME');
-    $this->addFieldMapping('field_team_id','TEAM ID');
+    $this->addFieldMapping('field_schemax_team_id','TEAM ID');
+    $this->addFieldMapping('field_schemax_league','League');
+    $this->addFieldMapping('field_schemax_club','Club');
+    $this->addFieldMapping('field_schemax_district','District');
+    $this->addFieldMapping('field_schemax_age_group','AGE LEVEL');
+    $this->addFieldMapping('field_schemax_max_players','MAX PLAYERS');
 
     $this->addUnmigratedDestinations(array(
       'uid',

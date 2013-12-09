@@ -12,6 +12,7 @@ function schemax_migrate_sports_migrate_api() {
     // that's why we register it here.
     'field handlers' => array(
       'DateMigrateFieldHandler',
+      'MigrateAddressFieldHandler',
     ),
     'groups' => array(
       'sports' => array(
@@ -30,7 +31,9 @@ function schemax_migrate_sports_migrate_api() {
       'PlayerNode2' => array(
         'class_name' => 'SchemaxSportsMigrationPlayer2',
         'group_name' => 'sports',
-      ),
+        'dependencies' => array(
+          'TeamNode2',
+        ),      ),
       'TeamNode' => array(
         'class_name' => 'SchemaxSportsMigrationTeam',
         'group_name' => 'sports',
@@ -43,7 +46,6 @@ function schemax_migrate_sports_migrate_api() {
         'class_name' => 'SchemaxSportsMigrationTeam2',
         'group_name' => 'sports',
       ),
-
     ),
   );
 
