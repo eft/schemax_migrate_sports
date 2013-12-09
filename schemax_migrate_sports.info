@@ -7,6 +7,7 @@ project = schemax_migrate_sports
 
 ;dependencies
 dependencies[] = migrate
+dependencies[] = phpexcel
 
 ;files
 files[] = schemax_migrate_sports.migrate.inc
