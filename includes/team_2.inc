@@ -5,19 +5,18 @@
  * Migration for teams
  */
 
-class SchemaxSportsMigrationTeam extends SchemaxSportsMigration {
+class SchemaxSportsMigrationTeam2 extends SchemaxSportsMigration {
 
   public function __construct($arguments) {
     parent::__construct($arguments);
 
-    $source_file_path = drupal_get_path('module', 'schemax_migrate_sports') . '/csv/LBSC_BCSA_team.csv';
-
+    $source_file_path = drupal_get_path('module', 'schemax_migrate_sports') . '/xls/LBSC_BCSA.xls';
     $this->description = t('Import teams into the database');
-    $this->source = new MigrateSourceCSV($source_file_path, $this->csvcolumns(), array('header_rows' => 1), $this->fields());
+    $this->source = new MigrateSourceSpreadsheet($source_file_path,'Teams');
 
     // Create a map object for tracking the relationships between source rows
     $this->map = new MigrateSQLMap($this->machineName, array(
-      'team_id' => array(
+      'TEAM ID' => array(
         'type' => 'int',
         'not null' => TRUE,
         'description' => 'Team ID',
@@ -26,7 +25,8 @@ class SchemaxSportsMigrationTeam extends SchemaxSportsMigration {
     );
     $this->destination = new MigrateDestinationNode('schemax_team');
 
-    $this->addFieldMapping('title', 'team_name');
+    $this->addFieldMapping('title', 'NAME');
+    $this->addFieldMapping('field_team_id','TEAM ID');
 
     $this->addUnmigratedDestinations(array(
       'uid',
@@ -47,32 +47,12 @@ class SchemaxSportsMigrationTeam extends SchemaxSportsMigration {
     ));
   }
 
-  // Define columns in source CSV file
-  protected function csvcolumns() {
-    $columns[0] = array('district_code', 'District Code');
-    $columns[1] = array('club_code', 'Club Code');
-    $columns[2] = array('league_code', 'League Code');
-    $columns[3] = array('team_id', 'Team ID');
-    $columns[4] = array('team_name', 'Team Name');
-    $columns[5] = array('age_group', 'Age Group');
-    $columns[6] = array('max_players', 'Max Players');
-    $columns[7] = array('cup', 'Cup');
-    return $columns;
-  }
-
-  // Define fields
-  protected function fields() {
-    // use empty array by default
-    return array();
-  }
-
   public function prepareRow($row) {
     // Always include this fragment at the beginning of every prepareRow()
     // implementation, so parent classes can ignore rows.
     if (parent::prepareRow($row) === FALSE) {
       return FALSE;
     }
-    $row->team_date_of_birth = $row->player_date_of_birth . '-01-02 00:00:00';
 
     return TRUE;
   }

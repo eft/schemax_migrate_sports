@@ -23,14 +23,27 @@ function schemax_migrate_sports_migrate_api() {
         'class_name' => 'SchemaxSportsMigrationPlayer',
         'group_name' => 'sports',
       ),
+      'PlayerNode1' => array(
+        'class_name' => 'SchemaxSportsMigrationPlayer1',
+        'group_name' => 'sports',
+      ),
+      'PlayerNode2' => array(
+        'class_name' => 'SchemaxSportsMigrationPlayer2',
+        'group_name' => 'sports',
+      ),
       'TeamNode' => array(
         'class_name' => 'SchemaxSportsMigrationTeam',
+        'group_name' => 'sports',
+      ),
+      'TeamNode1' => array(
+        'class_name' => 'SchemaxSportsMigrationTeam1',
         'group_name' => 'sports',
       ),
       'TeamNode2' => array(
         'class_name' => 'SchemaxSportsMigrationTeam2',
         'group_name' => 'sports',
       ),
+
     ),
   );
 
