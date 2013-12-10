@@ -5,37 +5,28 @@
  * Migration for teams
  */
 
-class SchemaxSportsMigrationPlayer1 extends SchemaxSportsMigration {
+class SchemaxSportsMigrationTestTeams extends SchemaxSportsMigration {
 
   public function __construct($arguments) {
     parent::__construct($arguments);
 
     $source_file_path = drupal_get_path('module', 'schemax_migrate_sports') . '/xls/league.xls';
-
     $this->description = t('Import teams into the database');
-    //$this->source = new MigrateSourceCSV($source_file_path, $this->csvcolumns(), array('header_rows' => 1), $this->fields());
-    $this->source = new MigrateSourceSpreadsheet($source_file_path,'Players');
+    $this->source = new MigrateSourceSpreadsheet($source_file_path,'Teams');
 
     // Create a map object for tracking the relationships between source rows
     $this->map = new MigrateSQLMap($this->machineName, array(
-      'PlayerID' => array(
+      'TeamID' => array(
         'type' => 'int',
         'not null' => TRUE,
-        'description' => 'Player ID',
+        'description' => 'Team ID',
       ),
         ), MigrateDestinationNode::getKeySchema()
     );
-    $this->destination = new MigrateDestinationNode('schemax_person');
+    $this->destination = new MigrateDestinationNode('schemax_team');
 
-    $this->addFieldMapping('field_team_id','TeamID')
-        ->sourceMigration('TeamNode2');
-
-    $this->addFieldMapping('og_group_ref', 'TeamID')
-        ->sourceMigration('TeamNode2');
-
-    $this->addFieldMapping('field_player_id','PlayerID');
-    $this->addFieldMapping('field_schemax_first_name', 'PlayerName');
-
+    $this->addFieldMapping('title', 'TeamName');
+    $this->addFieldMapping('field_team_id','TeamID');
 
     $this->addUnmigratedDestinations(array(
       'uid',

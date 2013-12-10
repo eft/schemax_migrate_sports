@@ -14,7 +14,4 @@ abstract class SchemaxSportsMigration extends Migration {
                             t('Product Owner')),
     );
   }
-
-
-
 }

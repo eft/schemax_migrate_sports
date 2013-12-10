@@ -18,45 +18,44 @@ function schemax_migrate_sports_migrate_api() {
       'sports' => array(
         'title' => t('Sports Imports'),
       ),
+      'test' => array(
+        'title' => t('Test Imports'),
+      ),
     ),
     'migrations' => array(
-      'PlayerNode' => array(
-        'class_name' => 'SchemaxSportsMigrationPlayer',
-        'group_name' => 'sports',
-      ),
       'CertificationTerm' => array(
         'class_name' => 'SchemaxSportsMigrationCertifications',
         'group_name' => 'sports',
       ),
-      'PlayerNode1' => array(
-        'class_name' => 'SchemaxSportsMigrationPlayer1',
+      'Teams' => array(
+        'class_name' => 'SchemaxSportsMigrationTeams',
         'group_name' => 'sports',
       ),
-      'PlayerNode2' => array(
-        'class_name' => 'SchemaxSportsMigrationPlayer2',
+      'Players' => array(
+        'class_name' => 'SchemaxSportsMigrationPlayers',
         'group_name' => 'sports',
         'dependencies' => array(
-            'TeamNode2',
-           ),
+          'Teams',
         ),
-      'StaffNode' => array(
+      ),
+      'Staff' => array(
         'class_name' => 'SchemaxSportsMigrationStaff',
         'group_name' => 'sports',
         'dependencies' => array(
-            'TeamNode2',
-          ),
+          'Teams',
+          'CertificationTerm',
         ),
-      'TeamNode' => array(
-        'class_name' => 'SchemaxSportsMigrationTeam',
-        'group_name' => 'sports',
       ),
-      'TeamNode1' => array(
-        'class_name' => 'SchemaxSportsMigrationTeam1',
-        'group_name' => 'sports',
+      'TestTeams' => array(
+        'class_name' => 'SchemaxSportsMigrationTestTeams',
+        'group_name' => 'test',
       ),
-      'TeamNode2' => array(
-        'class_name' => 'SchemaxSportsMigrationTeam2',
-        'group_name' => 'sports',
+      'TestPlayers' => array(
+        'class_name' => 'SchemaxSportsMigrationTestPlayers',
+        'group_name' => 'test',
+        'dependencies' => array(
+          'TestTeams',
+        ),
       ),
     ),
   );

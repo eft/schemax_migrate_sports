@@ -5,7 +5,7 @@
  * Migration for teams
  */
 
-class SchemaxSportsMigrationTeam2 extends SchemaxSportsMigration {
+class SchemaxSportsMigrationTeams extends SchemaxSportsMigration {
 
   public function __construct($arguments) {
     parent::__construct($arguments);
