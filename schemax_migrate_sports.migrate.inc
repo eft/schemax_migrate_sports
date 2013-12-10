@@ -24,6 +24,10 @@ function schemax_migrate_sports_migrate_api() {
         'class_name' => 'SchemaxSportsMigrationPlayer',
         'group_name' => 'sports',
       ),
+      'CertificationTerm' => array(
+        'class_name' => 'SchemaxSportsMigrationCertifications',
+        'group_name' => 'sports',
+      ),
       'PlayerNode1' => array(
         'class_name' => 'SchemaxSportsMigrationPlayer1',
         'group_name' => 'sports',
@@ -32,8 +36,16 @@ function schemax_migrate_sports_migrate_api() {
         'class_name' => 'SchemaxSportsMigrationPlayer2',
         'group_name' => 'sports',
         'dependencies' => array(
-          'TeamNode2',
-        ),      ),
+            'TeamNode2',
+           ),
+        ),
+      'StaffNode' => array(
+        'class_name' => 'SchemaxSportsMigrationStaff',
+        'group_name' => 'sports',
+        'dependencies' => array(
+            'TeamNode2',
+          ),
+        ),
       'TeamNode' => array(
         'class_name' => 'SchemaxSportsMigrationTeam',
         'group_name' => 'sports',
