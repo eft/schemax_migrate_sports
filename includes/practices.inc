@@ -28,8 +28,13 @@ class SchemaxSportsMigrationPractices extends SchemaxSportsMigration {
     $this->destination = new MigrateDestinationNode('schemax_event');
 
     $this->addFieldMapping(NULL, 'practice_id');
-    $this->addFieldMapping('title', 'team');
-    //$this->addFieldMapping('field_schemax_location_reference', 'location');
+
+    $this->addFieldMapping('title', 'practice_name');
+    $this->addFieldMapping('field_schemax_location_reference', 'location_id')
+        ->sourceMigration('Locations');
+
+    $this->addFieldMapping('og_group_ref', 'team_id')
+        ->sourceMigration('Teams');
 
     // No need to apply date correction since dates are imported in local time
     //$arguments = DateMigrateFieldHandler::arguments('America/Vancouver');
@@ -60,9 +65,10 @@ class SchemaxSportsMigrationPractices extends SchemaxSportsMigration {
   protected function csvcolumns() {
 
     $columns[0] = array('practice_id', 'ID');
-    $columns[1] = array('field_date', 'Date');
-    $columns[2] = array('team', 'Team');
-    $columns[3] = array('location', 'Location');
+    $columns[1] = array('practice_name', 'Practice Name');
+    $columns[2] = array('field_date', 'Date');
+    $columns[3] = array('team_id', 'TeamID');
+    $columns[4] = array('location_id', 'LocationID');
     return $columns;
   }
 

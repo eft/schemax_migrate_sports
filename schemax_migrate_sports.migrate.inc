@@ -13,6 +13,7 @@ function schemax_migrate_sports_migrate_api() {
     'field handlers' => array(
       'DateMigrateFieldHandler',
       'MigrateAddressFieldHandler',
+      'MigrateGeofieldFieldHandler',
     ),
     'groups' => array(
       'sports' => array(

@@ -13,7 +13,7 @@ class SchemaxSportsMigrationLocations extends SchemaxSportsMigration {
     $source_file_path = drupal_get_path('module', 'schemax_migrate_sports') . '/csv/locations.csv';
 
     $this->description = t('Import locations into the database');
-    $this->source = new MigrateSourceCSV($source_file_path, $this->csvcolumns(), array('header_rows' => 1), $this->fields());
+    $this->source = new MigrateSourceCSV($source_file_path, $this->csvcolumns(), array('header_rows' => 1), array());
 
     // Create a map object for tracking the relationships between source rows
     $this->map = new MigrateSQLMap($this->machineName, array(
@@ -29,10 +29,18 @@ class SchemaxSportsMigrationLocations extends SchemaxSportsMigration {
 
     $this->addFieldMapping(NULL, 'location_id');
     $this->addFieldMapping('title', 'location');
-    $this->addFieldMapping('field_schemax_playing_surfaces', 'playing_surface')
-        ->sourceMigration('PlayingSurfaces');
-    $this->addFieldMapping('field_schemax_location_types', 'location_type')
-        ->sourceMigration('LocationTypes');
+    $this->addFieldMapping('field_schemax_playing_surfaces', 'playing_surface');
+    $this->addFieldMapping('field_schemax_location_types', 'location_type');
+
+    $this->addFieldMapping('field_schemax_geo', 'geo_type');
+    $this->addFieldMapping('field_schemax_geo:wkt', 'wkt');
+
+    $this->addFieldMapping('field_schemax_geo:lat')
+            ->issueGroup(t('DNM'));
+    $this->addFieldMapping('field_schemax_geo:lon')
+            ->issueGroup(t('DNM'));
+
+
 
     $this->addUnmigratedDestinations(array(
       'uid',
@@ -50,6 +58,8 @@ class SchemaxSportsMigrationLocations extends SchemaxSportsMigration {
       'is_new',
       'path',
       'comment',
+      'field_schemax_geo:lat',
+      'field_schemax_geo:lon',
     ));
   }
 
@@ -60,25 +70,11 @@ class SchemaxSportsMigrationLocations extends SchemaxSportsMigration {
     $columns[1] = array('location', 'Location');
     $columns[2] = array('playing_surface', 'Playing Surface');
     $columns[3] = array('location_type', 'Location Type');
+    $columns[4] = array('geo_type', 'GeoType');
+    $columns[5] = array('wkt', 'WKT');
     return $columns;
   }
 
-  // Define fields
-  protected function fields() {
-    // use empty array by default
-    return array();
-  }
 
-  public function prepareRow($row) {
-    // Always include this fragment at the beginning of every prepareRow()
-    // implementation, so parent classes can ignore rows.
-    if (parent::prepareRow($row) === FALSE) {
-      return FALSE;
-    }
-
-    //$row->player_date_of_birth = $row->player_date_of_birth . '-01-02 00:00:00';
-
-    return TRUE;
-  }
 
 }
