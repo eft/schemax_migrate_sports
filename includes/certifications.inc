@@ -18,7 +18,7 @@ class SchemaxSportsMigrationCertifications extends SchemaxSportsMigration {
     // Create a map object for tracking the relationships between source rows
     $this->map = new MigrateSQLMap($this->machineName,
         array(
-          'certification' => array('type' => 'varchar',
+          'certifications' => array('type' => 'varchar',
                            'length' => 255,
                            'not null' => TRUE,
                            'description' => 'Official Certification',
@@ -29,7 +29,7 @@ class SchemaxSportsMigrationCertifications extends SchemaxSportsMigration {
 
     $this->destination = new MigrateDestinationTerm('certifications');
 
-    $this->addFieldMapping('name', 'certification');
+    $this->addFieldMapping('name', 'certifications');
 
     $this->addUnmigratedDestinations(array(
       'tid',
@@ -45,7 +45,7 @@ class SchemaxSportsMigrationCertifications extends SchemaxSportsMigration {
   // Define columns in source CSV file
   protected function csvcolumns() {
 
-    $columns[0] = array('certification', 'Certification');
+    $columns[0] = array('certifications', 'Certifications');
     return $columns;
   }
 

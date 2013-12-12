@@ -28,16 +28,17 @@ class SchemaxSportsMigrationPlayers extends SchemaxSportsMigration {
 
     $this->addFieldMapping('field_schemax_player_id','ID#');
     $this->addFieldMapping('og_group_ref', 'TEAM ID')
-        ->sourceMigration('TeamNode2');
+        ->sourceMigration('Teams');
 
     $this->addFieldMapping('field_schemax_first_name', 'FIRST NAME');
     $this->addFieldMapping('field_schemax_middle_name', 'MIDDLE NAME');
     $this->addFieldMapping('field_schemax_last_name', 'LAST NAME');
 
-    $arguments = DateMigrateFieldHandler::arguments('America/Vancouver');
-    $this->addFieldMapping('field_schemax_date_of_birth', 'BIRTH DATE (dd-mm-yyyy)')
-        ->callbacks(array($this, 'transform_date'))
-        ->arguments($arguments);
+    // No need to apply date correction since dates are imported in local time
+    //$arguments = DateMigrateFieldHandler::arguments('America/Vancouver');
+    $this->addFieldMapping('field_schemax_date_of_birth', 'BIRTH DATE (dd-mm-yyyy)');
+    //    ->callbacks(array($this, 'transform_date'))
+    //    ->arguments($arguments);
 
     $this->addFieldMapping('field_schemax_gender', 'GENDER (M/F)');
     $this->addFieldMapping('field_schemax_phone', 'HOME PHONE');
@@ -52,6 +53,8 @@ class SchemaxSportsMigrationPlayers extends SchemaxSportsMigration {
 
     $this->addFieldMapping('field_schemax_email', 'EMAIL');
 
+    $this->addFieldMapping('field_schemax_team_roles')
+        ->defaultValue('Player');
 
     $this->addFieldMapping('title')
         ->description(t('Node titles for Person bundles are created with automatic entity labels'))

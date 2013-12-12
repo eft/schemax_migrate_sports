@@ -28,7 +28,7 @@ class SchemaxSportsMigrationStaff extends SchemaxSportsMigration {
 
     $this->addFieldMapping('field_schemax_player_id','ID#');
     $this->addFieldMapping('og_group_ref', 'TEAM ID')
-        ->sourceMigration('TeamNode2');
+        ->sourceMigration('Teams');
 
     $this->addFieldMapping('field_schemax_first_name', 'FIRST NAME');
     $this->addFieldMapping('field_schemax_middle_name', 'MIDDLE NAME');

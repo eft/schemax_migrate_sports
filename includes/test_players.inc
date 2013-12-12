@@ -28,10 +28,10 @@ class SchemaxSportsMigrationTestPlayers extends SchemaxSportsMigration {
     $this->destination = new MigrateDestinationNode('schemax_person');
 
     $this->addFieldMapping('field_team_id','TeamID')
-        ->sourceMigration('TeamNode2');
+        ->sourceMigration('Teams');
 
     $this->addFieldMapping('og_group_ref', 'TeamID')
-        ->sourceMigration('TeamNode2');
+        ->sourceMigration('Teams');
 
     $this->addFieldMapping('field_player_id','PlayerID');
     $this->addFieldMapping('field_schemax_first_name', 'PlayerName');
