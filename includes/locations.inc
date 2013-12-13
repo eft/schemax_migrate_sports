@@ -32,15 +32,10 @@ class SchemaxSportsMigrationLocations extends SchemaxSportsMigration {
     $this->addFieldMapping('field_schemax_playing_surfaces', 'playing_surface');
     $this->addFieldMapping('field_schemax_location_types', 'location_type');
 
-    $this->addFieldMapping('field_schemax_geo', 'geo_type');
-    $this->addFieldMapping('field_schemax_geo:wkt', 'wkt');
-
-    $this->addFieldMapping('field_schemax_geo:lat')
-            ->issueGroup(t('DNM'));
-    $this->addFieldMapping('field_schemax_geo:lon')
-            ->issueGroup(t('DNM'));
-
-
+    $this->addFieldMapping('field_schemax_geo', 'wkt');
+    // Add a source wkt (text) field
+    //$this->addFieldMapping('field_schemax_geo:wkt', 'wkt');
+    //$this->addFieldMapping('field_schemax_geo:input_format', 'input_format');
 
     $this->addUnmigratedDestinations(array(
       'uid',
@@ -60,6 +55,11 @@ class SchemaxSportsMigrationLocations extends SchemaxSportsMigration {
       'comment',
       'field_schemax_geo:lat',
       'field_schemax_geo:lon',
+      'field_schemax_geo:left',
+      'field_schemax_geo:top',
+      'field_schemax_geo:right',
+      'field_schemax_geo:bottom',
+      'field_schemax_geo:geohash',
     ));
   }
 
@@ -72,9 +72,38 @@ class SchemaxSportsMigrationLocations extends SchemaxSportsMigration {
     $columns[3] = array('location_type', 'Location Type');
     $columns[4] = array('geo_type', 'GeoType');
     $columns[5] = array('wkt', 'WKT');
+    $columns[6] = array('input_format', 'Input Format');
+
+//    $columns[6] = array('lat', 'Lat');
+//    $columns[7] = array('lon', 'Lon');
+//    $columns[8] = array('left', 'Left');
+//    $columns[9] = array('top', 'Top');
+//    $columns[10] = array('right', 'Right');
+//    $columns[11] = array('bottom', 'Bottom');
     return $columns;
   }
 
-
+//  protected function transform_wkt($value) {
+//
+//  }
+//
+//  public function prepareRow($row) {
+//
+//    // Get the WKT string
+//    $wkt_text = $row->wkt;
+//    // instantiate a new geometry object from the original WKT string
+//    $geom = geoPHP::load($wkt_text, 'wkt');
+//    // output the geometry in binary format
+//    $wkb = $geom->out('wkb');
+//
+//    // Store binary value in input row
+//    $row->geom = $wkb;
+//
+//    // generate a geohash value
+//    $geohash_truncated = substr($geom->out('geohash'), 0, GEOFIELD_GEOHASH_LENGTH);
+//
+//    // store geohash in input row
+//    $row->geohash = $geohash_truncated;
+//  }
 
 }

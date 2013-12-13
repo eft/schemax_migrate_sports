@@ -22,5 +22,6 @@ files[] = includes/teams.inc
 files[] = includes/players.inc
 files[] = includes/staff.inc
 files[] = includes/practices.inc
+files[] = includes/test_persons.inc
 files[] = includes/test_teams.inc
 files[] = includes/test_players.inc

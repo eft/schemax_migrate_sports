@@ -5,14 +5,14 @@
  * Migration for players
  */
 
-class SchemaxSportsMigrationStaff extends SchemaxSportsMigration {
+class SchemaxSportsMigrationTestPersons extends SchemaxSportsMigration {
 
   public function __construct($arguments) {
     parent::__construct($arguments);
 
-    $source_file_path = drupal_get_path('module', 'schemax_migrate_sports') . '/xls/LBSC_BCSA.xls';
-    $this->description = t('Import staff into the database');
-    $this->source = new MigrateSourceSpreadsheet($source_file_path,'Team Staff');
+    $source_file_path = drupal_get_path('module', 'schemax_migrate_sports') . '/xls/test_persons.xls';
+    $this->description = t('Import test players into the database');
+    $this->source = new MigrateSourceSpreadsheet($source_file_path,'persons');
 
     // Create a map object for tracking the relationships between source rows
     $this->map = new MigrateSQLMap($this->machineName, array(
