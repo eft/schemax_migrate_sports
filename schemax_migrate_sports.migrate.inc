@@ -72,6 +72,25 @@ function schemax_migrate_sports_migrate_api() {
           'TeamRoles',
         ),
       ),
+      'Staff1' => array(
+        'class_name' => 'SchemaxSportsMigrationStaff1',
+        'group_name' => 'sports',
+        'dependencies' => array(
+          'Certifications',
+          'Teams',
+          'TeamRoles',
+        ),
+      ),
+      'Staff2' => array(
+        'class_name' => 'SchemaxSportsMigrationStaff2',
+        'group_name' => 'sports',
+        'dependencies' => array(
+          'Certifications',
+          'Teams',
+          'TeamRoles',
+          'Staff1',
+        ),
+      ),
       'Practices' => array(
         'class_name' => 'SchemaxSportsMigrationPractices',
         'group_name' => 'sports',
