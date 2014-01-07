@@ -26,3 +26,6 @@ files[] = includes/practices.inc
 files[] = includes/test_persons.inc
 files[] = includes/test_teams.inc
 files[] = includes/test_players.inc
+files[] = includes/images.inc
+files[] = includes/pages.inc
+files[] = includes/fpp_example.inc

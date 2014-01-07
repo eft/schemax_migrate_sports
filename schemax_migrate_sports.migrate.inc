@@ -25,23 +25,23 @@ function schemax_migrate_sports_migrate_api() {
     ),
     'migrations' => array(
       'Certifications' => array(
-        'class_name' => 'SchemaxSportsMigrationCertifications',
+        'class_name' => 'SchemaxMigrationSportsCertifications',
         'group_name' => 'sports',
       ),
       'TeamRoles' => array(
-        'class_name' => 'SchemaxSportsMigrationTeamRoles',
+        'class_name' => 'SchemaxMigrationSportsTeamRoles',
         'group_name' => 'sports',
       ),
       'LocationTypes' => array(
-        'class_name' => 'SchemaxSportsMigrationLocationTypes',
+        'class_name' => 'SchemaxMigrationSportsLocationTypes',
         'group_name' => 'sports',
       ),
       'PlayingSurfaces' => array(
-        'class_name' => 'SchemaxSportsMigrationPlayingSurfaces',
+        'class_name' => 'SchemaxMigrationSportsPlayingSurfaces',
         'group_name' => 'sports',
       ),
       'Locations' => array(
-        'class_name' => 'SchemaxSportsMigrationLocations',
+        'class_name' => 'SchemaxMigrationSportsLocations',
         'group_name' => 'sports',
         'dependencies' => array(
           'LocationTypes',
@@ -49,14 +49,14 @@ function schemax_migrate_sports_migrate_api() {
         ),
       ),
       'Teams' => array(
-        'class_name' => 'SchemaxSportsMigrationTeams',
+        'class_name' => 'SchemaxMigrationSportsTeams',
         'group_name' => 'sports',
         'dependencies' => array(
           'TeamRoles',
         ),
       ),
       'Players' => array(
-        'class_name' => 'SchemaxSportsMigrationPlayers',
+        'class_name' => 'SchemaxMigrationSportsPlayers',
         'group_name' => 'sports',
         'dependencies' => array(
           'Teams',
@@ -64,7 +64,7 @@ function schemax_migrate_sports_migrate_api() {
         ),
       ),
       'Staff' => array(
-        'class_name' => 'SchemaxSportsMigrationStaff',
+        'class_name' => 'SchemaxMigrationSportsStaff',
         'group_name' => 'sports',
         'dependencies' => array(
           'Certifications',
@@ -73,7 +73,7 @@ function schemax_migrate_sports_migrate_api() {
         ),
       ),
       'Staff1' => array(
-        'class_name' => 'SchemaxSportsMigrationStaff1',
+        'class_name' => 'SchemaxMigrationSportsStaff1',
         'group_name' => 'sports',
         'dependencies' => array(
           'Certifications',
@@ -82,7 +82,7 @@ function schemax_migrate_sports_migrate_api() {
         ),
       ),
       'Staff2' => array(
-        'class_name' => 'SchemaxSportsMigrationStaff2',
+        'class_name' => 'SchemaxMigrationSportsStaff2',
         'group_name' => 'sports',
         'dependencies' => array(
           'Certifications',
@@ -92,26 +92,38 @@ function schemax_migrate_sports_migrate_api() {
         ),
       ),
       'Practices' => array(
-        'class_name' => 'SchemaxSportsMigrationPractices',
+        'class_name' => 'SchemaxMigrationSportsPractices',
         'group_name' => 'sports',
         'dependencies' => array(
           'Teams',
           'TeamRoles',
         ),
       ),
+      'Pages' => array(
+        'class_name' => 'SchemaxMigrationSportsPages',
+        'group_name' => 'content',
+      ),
+      'FPPs' => array(
+        'class_name' => 'SchemaxMigrationSportsFPPs',
+        'group_name' => 'content',
+      ),
+      'Images' => array(
+        'class_name' => 'SchemaxMigrationSportsImages',
+        'group_name' => 'sports',
+      ),
       'TestTeams' => array(
-        'class_name' => 'SchemaxSportsMigrationTestTeams',
+        'class_name' => 'SchemaxMigrationSportsTestTeams',
         'group_name' => 'test',
       ),
       'TestPersons' => array(
-        'class_name' => 'SchemaxSportsMigrationTestPersons',
+        'class_name' => 'SchemaxMigrationSportsTestPersons',
         'group_name' => 'test',
         'dependencies' => array(
           'Teams',
         ),
       ),
       'TestPlayers' => array(
-        'class_name' => 'SchemaxSportsMigrationTestPlayers',
+        'class_name' => 'SchemaxMigrationSportsTestPlayers',
         'group_name' => 'test',
         'dependencies' => array(
           'TestTeams',

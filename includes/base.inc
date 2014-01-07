@@ -1,6 +1,6 @@
 <?php
 
-abstract class SchemaxSportsMigration extends Migration {
+abstract class SchemaxMigrationSports extends Migration {
   // A Migration constructor takes an array of arguments as its first parameter.
   // The arguments must be passed through to the parent constructor.
   public function __construct($arguments) {
