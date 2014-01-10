@@ -152,6 +152,14 @@ function schemax_migrate_sports_migrate_api() {
           'Staff1',
         ),
       ),
+      'TestPractices' => array(
+        'class_name' => 'SchemaxMigrationSportsTestPractices',
+        'group_name' => 'test',
+        'dependencies' => array(
+          'Teams',
+          'TeamRoles',
+        ),
+      ),
     ),
   );
 

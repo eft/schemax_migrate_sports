@@ -30,7 +30,7 @@ files[] = includes/test_teams.inc
 files[] = includes/test_players.inc
 files[] = includes/test_staff_1.inc
 files[] = includes/test_staff_2.inc
-
+files[] = includes/test_practices.inc
 
 files[] = includes/images.inc
 files[] = includes/pages.inc
