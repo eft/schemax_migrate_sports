@@ -110,6 +110,9 @@ function schemax_migrate_sports_migrate_api() {
       'MenuLinks' => array(
         'class_name' => 'SchemaxMigrationSportsMenuLinks',
         'group_name' => 'content',
+        'dependencies' => array(
+          'Pages',
+        ),
       ),
       'Images' => array(
         'class_name' => 'SchemaxMigrationSportsImages',
@@ -149,7 +152,7 @@ function schemax_migrate_sports_migrate_api() {
           'Certifications',
           'TestTeams',
           'TeamRoles',
-          'Staff1',
+          'TestStaff1',
         ),
       ),
       'TestPractices' => array(
