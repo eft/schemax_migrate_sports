@@ -16,7 +16,7 @@ class SchemaxMigrationSportsTestTeams extends SchemaxMigrationSports {
 
     // Create a map object for tracking the relationships between source rows
     $this->map = new MigrateSQLMap($this->machineName, array(
-      'TeamID' => array(
+      'TEAM ID' => array(
         'type' => 'int',
         'not null' => TRUE,
         'description' => 'Team ID',
@@ -25,8 +25,13 @@ class SchemaxMigrationSportsTestTeams extends SchemaxMigrationSports {
     );
     $this->destination = new MigrateDestinationNode('schemax_team');
 
-    $this->addFieldMapping('title', 'TeamName');
-    $this->addFieldMapping('field_team_id','TeamID');
+    $this->addFieldMapping('title', 'NAME');
+    $this->addFieldMapping('field_schemax_team_id','TEAM ID');
+    $this->addFieldMapping('field_schemax_league','League');
+    $this->addFieldMapping('field_schemax_club','Club');
+    $this->addFieldMapping('field_schemax_district','District');
+    $this->addFieldMapping('field_schemax_age_group','AGE LEVEL');
+    $this->addFieldMapping('field_schemax_max_players','MAX PLAYERS');
 
     $this->addUnmigratedDestinations(array(
       'uid',
@@ -47,33 +52,12 @@ class SchemaxMigrationSportsTestTeams extends SchemaxMigrationSports {
     ));
   }
 
-  // Define columns in source CSV file
-  protected function csvcolumns() {
-    // Reg_ID	Reg Date	Team	Div	G	First Name	Last Name	Born
-    $columns[0] = array('registration_id', 'Registration ID');
-    $columns[1] = array('registration_date', 'Registration Date');
-    $columns[2] = array('team_name', 'Team Name');
-    $columns[3] = array('team_division', 'Team Division');
-    $columns[4] = array('team_gender', 'Team Gender');
-    $columns[5] = array('team_first_name', 'Team First Name');
-    $columns[6] = array('team_last_name', 'Team Last Name');
-    $columns[7] = array('team_date_of_birth', 'Team Date of Birth');
-    return $columns;
-  }
-
-  // Define fields
-  protected function fields() {
-    // use empty array by default
-    return array();
-  }
-
   public function prepareRow($row) {
     // Always include this fragment at the beginning of every prepareRow()
     // implementation, so parent classes can ignore rows.
     if (parent::prepareRow($row) === FALSE) {
       return FALSE;
     }
-    //$row->team_date_of_birth = $row->player_date_of_birth . '-01-02 00:00:00';
 
     return TRUE;
   }

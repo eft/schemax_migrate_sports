@@ -107,6 +107,10 @@ function schemax_migrate_sports_migrate_api() {
         'class_name' => 'SchemaxMigrationSportsFPPs',
         'group_name' => 'content',
       ),
+      'MenuLinks' => array(
+        'class_name' => 'SchemaxMigrationSportsMenuLinks',
+        'group_name' => 'content',
+      ),
       'Images' => array(
         'class_name' => 'SchemaxMigrationSportsImages',
         'group_name' => 'sports',
@@ -119,7 +123,7 @@ function schemax_migrate_sports_migrate_api() {
         'class_name' => 'SchemaxMigrationSportsTestPersons',
         'group_name' => 'test',
         'dependencies' => array(
-          'Teams',
+          'TestTeams',
         ),
       ),
       'TestPlayers' => array(
@@ -127,6 +131,25 @@ function schemax_migrate_sports_migrate_api() {
         'group_name' => 'test',
         'dependencies' => array(
           'TestTeams',
+        ),
+      ),
+      'TestStaff1' => array(
+        'class_name' => 'SchemaxMigrationSportsTestStaff1',
+        'group_name' => 'test',
+        'dependencies' => array(
+          'Certifications',
+          'TestTeams',
+          'TeamRoles',
+        ),
+      ),
+      'TestStaff2' => array(
+        'class_name' => 'SchemaxMigrationSportsTestStaff2',
+        'group_name' => 'test',
+        'dependencies' => array(
+          'Certifications',
+          'TestTeams',
+          'TeamRoles',
+          'Staff1',
         ),
       ),
     ),

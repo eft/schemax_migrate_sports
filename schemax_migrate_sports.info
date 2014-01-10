@@ -17,15 +17,21 @@ files[] = includes/team_roles.inc
 files[] = includes/location_types.inc
 files[] = includes/playing_surfaces.inc
 files[] = includes/locations.inc
+files[] = includes/menu_links.inc
 files[] = includes/teams.inc
 files[] = includes/players.inc
 files[] = includes/staff.inc
 files[] = includes/staff_1.inc
 files[] = includes/staff_2.inc
 files[] = includes/practices.inc
+
 files[] = includes/test_persons.inc
 files[] = includes/test_teams.inc
 files[] = includes/test_players.inc
+files[] = includes/test_staff_1.inc
+files[] = includes/test_staff_2.inc
+
+
 files[] = includes/images.inc
 files[] = includes/pages.inc
 files[] = includes/fpp_example.inc
