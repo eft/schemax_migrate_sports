@@ -38,12 +38,12 @@ class SchemaxMigrationSportsTestStaff2 extends SchemaxMigrationSports {
     // has a source id, not a nid, we need to apply the original wine migration
     // mapping to populate the nid.
     $this->addFieldMapping('nid','ID#')
-         ->sourceMigration('Staff1');
+         ->sourceMigration('TestStaff1');
 
 
 
     $this->addFieldMapping('og_group_ref', 'TEAM ID')
-        ->sourceMigration('Teams');
+        ->sourceMigration('TestTeams');
 
 
     $this->addUnmigratedDestinations(array(
