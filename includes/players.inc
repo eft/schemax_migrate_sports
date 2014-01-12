@@ -62,7 +62,7 @@ class SchemaxMigrationSportsPlayers extends SchemaxMigrationSports {
 
     // Hard code uid to registrar user
     $this->addFieldMapping('uid')
-           >defaultValue(5)
+           ->defaultValue(5)
            ->sourceMigration('Users');
 
     $this->addUnmigratedDestinations(array(
