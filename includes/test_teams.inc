@@ -33,8 +33,12 @@ class SchemaxMigrationSportsTestTeams extends SchemaxMigrationSports {
     $this->addFieldMapping('field_schemax_age_group','AGE LEVEL');
     $this->addFieldMapping('field_schemax_max_players','MAX PLAYERS');
 
+    // Map Team IDs 1:1 to uids from Users migration
+    $this->addFieldMapping('uid','TEAM ID')
+            ->sourceMigration('Users');
+
+
     $this->addUnmigratedDestinations(array(
-      'uid',
       'created',
       'changed',
       'status',

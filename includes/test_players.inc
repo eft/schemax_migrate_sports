@@ -61,8 +61,11 @@ class SchemaxMigrationSportsTestPlayers extends SchemaxMigrationSports {
         ->description(t('Node titles for Person bundles are created with automatic entity labels'))
         ->issueGroup(t('DNM'));
 
+        // Map Team IDs 1:1 to uids from Users migration
+    $this->addFieldMapping('uid','TEAM ID')
+            ->sourceMigration('Users');
+
     $this->addUnmigratedDestinations(array(
-      'uid',
       'created',
       'changed',
       'status',

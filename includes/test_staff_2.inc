@@ -40,8 +40,6 @@ class SchemaxMigrationSportsTestStaff2 extends SchemaxMigrationSports {
     $this->addFieldMapping('nid','ID#')
          ->sourceMigration('TestStaff1');
 
-
-
     $this->addFieldMapping('og_group_ref', 'TEAM ID')
         ->sourceMigration('TestTeams');
 
