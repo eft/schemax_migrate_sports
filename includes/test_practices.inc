@@ -34,7 +34,7 @@ class SchemaxMigrationSportsTestPractices extends SchemaxMigrationSports {
         ->sourceMigration('Locations');
 
     $this->addFieldMapping('og_group_ref', 'team_id')
-        ->sourceMigration('Teams');
+        ->sourceMigration('TestTeams');
 
     // No need to apply date correction since dates are imported in local time
     //$arguments = DateMigrateFieldHandler::arguments('America/Vancouver');
