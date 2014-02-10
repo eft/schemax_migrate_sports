@@ -26,7 +26,7 @@ class SchemaxMigrationSportsTestTeams extends SchemaxMigrationSports {
     $this->destination = new MigrateDestinationNode('schemax_team');
 
     $this->addFieldMapping('title', 'NAME');
-    $this->addFieldMapping('field_schemax_team_id','TEAM ID');
+    $this->addFieldMapping('field_schemax_team_id','ID#');
     $this->addFieldMapping('field_schemax_league','League');
     $this->addFieldMapping('field_schemax_club','Club');
     $this->addFieldMapping('field_schemax_district','District');
