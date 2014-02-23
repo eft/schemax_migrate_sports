@@ -26,17 +26,22 @@ class SchemaxMigrationSportsTestTeams extends SchemaxMigrationSports {
     $this->destination = new MigrateDestinationNode('schemax_team');
 
     $this->addFieldMapping('title', 'NAME');
-    $this->addFieldMapping('field_schemax_team_id','ID#');
+    //$this->addFieldMapping('field_schemax_team_id','ID#');
     $this->addFieldMapping('field_schemax_league','League');
     $this->addFieldMapping('field_schemax_club','Club');
     $this->addFieldMapping('field_schemax_district','District');
     $this->addFieldMapping('field_schemax_age_group','AGE LEVEL');
     $this->addFieldMapping('field_schemax_max_players','MAX PLAYERS');
 
+
+
     // Map Team IDs 1:1 to uids from Users migration
     $this->addFieldMapping('uid','TEAM ID')
             ->sourceMigration('Users');
 
+
+    $this->addFieldMapping('group_access')
+            ->defaultValue(0);// 0=public, 1=private
 
     $this->addUnmigratedDestinations(array(
       'created',
@@ -53,6 +58,7 @@ class SchemaxMigrationSportsTestTeams extends SchemaxMigrationSports {
       'is_new',
       'path',
       'comment',
+      'group_content_access'
     ));
   }
 
