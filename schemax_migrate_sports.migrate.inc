@@ -122,13 +122,6 @@ function schemax_migrate_sports_migrate_api() {
         'class_name' => 'SchemaxMigrationSportsTestTeams',
         'group_name' => 'test',
       ),
-      'TestPersons' => array(
-        'class_name' => 'SchemaxMigrationSportsTestPersons',
-        'group_name' => 'test',
-        'dependencies' => array(
-          'TestTeams',
-        ),
-      ),
       'TestPlayers' => array(
         'class_name' => 'SchemaxMigrationSportsTestPlayers',
         'group_name' => 'test',

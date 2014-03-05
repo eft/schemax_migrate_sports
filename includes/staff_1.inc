@@ -64,8 +64,13 @@ class SchemaxMigrationSportsStaff1 extends SchemaxMigrationSports {
         ->description(t('Node titles for Person bundles are created with automatic entity labels'))
         ->issueGroup(t('DNM'));
 
+
+    // Hard code uid to registrar user
+    $this->addFieldMapping('uid')
+           ->defaultValue(5)
+           ->sourceMigration('Users');
+
     $this->addUnmigratedDestinations(array(
-      'uid',
       'created',
       'changed',
       'status',
