@@ -27,7 +27,7 @@ class SchemaxMigrationSportsMenuLinks extends SchemaxMigrationSports {
 
     $this->destination = new MigrateDestinationMenuLinks();
 
-    $this->addFieldMapping('menu_name')->defaultValue('main-menu');
+    $this->addFieldMapping('menu_name')->defaultValue('schemax-sports-menu');
     $this->addFieldMapping('mlid', 'mlid');
     $this->addFieldMapping('plid', 'ref_parent')->sourceMigration($this->getMachineName());
     $this->addFieldMapping('link_path', 'link_path');
