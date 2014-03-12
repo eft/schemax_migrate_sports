@@ -12,7 +12,7 @@ class SchemaxMigrationSportsPages extends SchemaxMigrationSports {
 
     $source_file_path = drupal_get_path('module', 'schemax_migrate_sports') . '/csv/pages.csv';
 
-    $this->description = t('Import locations into the database');
+    $this->description = t('Import pages into the database');
     $this->source = new MigrateSourceCSV($source_file_path, $this->csvcolumns(), array('header_rows' => 1), array());
 
     // Create a map object for tracking the relationships between source rows
