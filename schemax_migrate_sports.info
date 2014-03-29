@@ -9,6 +9,10 @@ project = schemax_migrate_sports
 dependencies[] = migrate
 dependencies[] = phpexcel
 
+;extra dependencies for commerce entities
+dependencies[] = commerce_migrate
+dependencies[] = migrate_extras
+
 ;files
 files[] = schemax_migrate_sports.migrate.inc
 files[] = includes/base.inc
@@ -33,4 +37,6 @@ files[] = includes/test_practices.inc
 
 files[] = includes/images.inc
 files[] = includes/pages.inc
+files[] = includes/products.inc
+files[] = includes/product_displays.inc
 files[] = includes/fpp_example.inc

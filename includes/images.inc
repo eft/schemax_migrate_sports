@@ -46,20 +46,4 @@ class SchemaxMigrationSportsImages extends SchemaxMigrationSports {
     ));
 
   }
-
-  // Define columns in source CSV file
-  protected function csvcolumns() {
-
-    $columns[0] = array('location_id', 'Location ID');
-    $columns[1] = array('location', 'Location');
-    $columns[2] = array('playing_surface', 'Playing Surface');
-    $columns[3] = array('location_type', 'Location Type');
-    $columns[4] = array('geo_type', 'GeoType');
-    $columns[5] = array('wkt', 'WKT');
-    $columns[6] = array('input_format', 'Input Format');
-    return $columns;
-  }
-
-
-
 }

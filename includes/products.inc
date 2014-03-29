@@ -2,35 +2,35 @@
 
 /*
  * @file
- * Migration for pages
+ * Migration for products
  */
 
-class SchemaxMigrationSportsPages extends SchemaxMigrationSports {
+class SchemaxMigrationSportsProducts extends SchemaxMigrationSports {
 
   public function __construct($arguments) {
     parent::__construct($arguments);
 
-    $source_file_path = drupal_get_path('module', 'schemax_migrate_sports') . '/csv/pages.csv';
+    $source_file_path = drupal_get_path('module', 'schemax_migrate_sports') . '/csv/products.csv';
 
-    $this->description = t('Import pages into the database');
+    $this->description = t('Import products into the database');
     $this->source = new MigrateSourceCSV($source_file_path, $this->csvcolumns(), array('header_rows' => 1), array());
 
     // Create a map object for tracking the relationships between source rows
     $this->map = new MigrateSQLMap($this->machineName, array(
-      'pgid' => array(
-        'type' => 'int',
+      'sku' => array(
+        'type' => 'varchar',
+        'length' => 255,
         'not null' => TRUE,
-        'description' => 'Page ID',
+        'description' => 'Product SKU',
       ),
-        ), MigrateDestinationNode::getKeySchema()
+        ), MigrateDestinationEntityAPI::getKeySchema('commerce_product', 'schemax_product_type')
     );
 
-    $this->destination = new MigrateDestinationNode('page');
+    $this->destination = new MigrateDestinationEntityAPI('commerce_product', 'schemax_product_type');
 
-    $this->addFieldMapping(NULL, 'pgid');
+    $this->addFieldMapping('sku', 'sku');
     $this->addFieldMapping('title', 'title');
-    $this->addFieldMapping('field_summary', 'summary');
-    $this->addFieldMapping('body', 'body');
+    $this->addFieldMapping('commerce_price', 'price');
 
     // Add mapping for images linked to the node
     //
@@ -41,35 +41,29 @@ class SchemaxMigrationSportsPages extends SchemaxMigrationSports {
     $this->addFieldMapping('field_image', 'imagename');
     // Make sure the source location is also mapped
     $this->addFieldMapping('field_image:source_dir')
-      ->defaultValue($source_images_path);
+        ->defaultValue($source_images_path);
+
+    // Hard code uid to registrar user
+    $this->addFieldMapping('uid')
+           ->defaultValue(5)
+           ->sourceMigration('Users');
 
     $this->addUnmigratedDestinations(array(
-      'uid',
       'created',
       'changed',
       'status',
-      'promote',
-      'sticky',
-      'revision',
-      'log',
       'language',
-      'tnid',
-      'translate',
-      'revision_uid',
-      'is_new',
-      'path',
-      'comment',
+      'revision_id',
     ));
   }
 
   // Define columns in source CSV file
   protected function csvcolumns() {
 
-    $columns[0] = array('pgid', 'page_id');
+    $columns[0] = array('sku', 'sku');
     $columns[1] = array('title', 'title');
-    $columns[2] = array('summary', 'summary');
-    $columns[3] = array('body', 'body');
-    $columns[4] = array('imagename', 'imagename');
+    $columns[2] = array('price', 'price');
+    $columns[3] = array('imagename', 'imagename');
     return $columns;
   }
 

@@ -103,6 +103,14 @@ function schemax_migrate_sports_migrate_api() {
         'class_name' => 'SchemaxMigrationSportsPages',
         'group_name' => 'content',
       ),
+      'Products' => array(
+        'class_name' => 'SchemaxMigrationSportsProducts',
+        'group_name' => 'content',
+      ),
+      'ProductDisplays' => array(
+        'class_name' => 'SchemaxMigrationSportsProductDisplays',
+        'group_name' => 'content',
+      ),
       'FPPs' => array(
         'class_name' => 'SchemaxMigrationSportsFPPs',
         'group_name' => 'content',
