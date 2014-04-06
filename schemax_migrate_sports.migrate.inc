@@ -40,6 +40,10 @@ function schemax_migrate_sports_migrate_api() {
         'class_name' => 'SchemaxMigrationSportsPlayingSurfaces',
         'group_name' => 'sports',
       ),
+      'EventTypes' => array(
+        'class_name' => 'SchemaxMigrationSportsEventTypes',
+        'group_name' => 'sports',
+      ),
       'Locations' => array(
         'class_name' => 'SchemaxMigrationSportsLocations',
         'group_name' => 'sports',

@@ -5,31 +5,31 @@
  * Migration for players
  */
 
-class SchemaxMigrationSportsPlayingSurfaces extends SchemaxMigrationSports {
+class SchemaxMigrationSportsEventTypes extends SchemaxMigrationSports {
 
   public function __construct($arguments) {
     parent::__construct($arguments);
 
-    $source_file_path = drupal_get_path('module', 'schemax_migrate_sports') . '/csv/playing_surfaces.csv';
+    $source_file_path = drupal_get_path('module', 'schemax_migrate_sports') . '/csv/event_types.csv';
 
-    $this->description = t('Import playing_surfaces into the database');
+    $this->description = t('Import event types into the database');
     $this->source = new MigrateSourceCSV($source_file_path, $this->csvcolumns(), array('header_rows' => 1), array());
 
     // Create a map object for tracking the relationships between source rows
     $this->map = new MigrateSQLMap($this->machineName,
         array(
-          'playing_surfaces' => array('type' => 'varchar',
+          'event_types' => array('type' => 'varchar',
                            'length' => 255,
                            'not null' => TRUE,
-                           'description' => 'Playing Surfaces',
+                           'description' => 'Event Types',
                           )
         ),
         MigrateDestinationTerm::getKeySchema()
       );
 
-    $this->destination = new MigrateDestinationTerm('playing_surfaces');
+    $this->destination = new MigrateDestinationTerm('event_types');
 
-    $this->addFieldMapping('name', 'playing_surfaces');
+    $this->addFieldMapping('name', 'event_types');
 
     $this->addUnmigratedDestinations(array(
       'tid',
@@ -45,7 +45,7 @@ class SchemaxMigrationSportsPlayingSurfaces extends SchemaxMigrationSports {
   // Define columns in source CSV file
   protected function csvcolumns() {
 
-    $columns[0] = array('playing_surfaces', 'Playing Surfaces');
+    $columns[0] = array('event_types', 'Event Types');
     return $columns;
   }
 }
