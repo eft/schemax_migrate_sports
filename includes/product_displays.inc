@@ -34,6 +34,7 @@ class SchemaxMigrationSportsProductDisplays extends SchemaxMigrationSports {
     $this->addFieldMapping('field_schemax_catalog_category', 'category');
     $this->addFieldMapping('field_schemax_catalog_category:create_term')
         ->defaultValue(TRUE);
+    $this->addFieldMapping('field_schemax_promotion', 'promotion');
 
     // Hard code uid to registrar user
     $this->addFieldMapping('uid')
@@ -71,6 +72,7 @@ class SchemaxMigrationSportsProductDisplays extends SchemaxMigrationSports {
     $columns[2] = array('body', 'body');
     $columns[3] = array('sku', 'sku');
     $columns[4] = array('category', 'category');
+    $columns[5] = array('promotion', 'promotion');
     return $columns;
   }
 
