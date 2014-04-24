@@ -2,7 +2,7 @@ name = Schemax Migrate (Sports)
 description = Faciliates ETL operations using the migrate module
 core = 7.x
 package = Schemax
-version = 7.x-1.0-alpha1
+version = 7.x-1.x
 project = schemax_migrate_sports
 
 ;dependencies
