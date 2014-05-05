@@ -31,6 +31,8 @@ class SchemaxMigrationSportsPages extends SchemaxMigrationSports {
     $this->addFieldMapping('title', 'title');
     $this->addFieldMapping('field_summary', 'summary');
     $this->addFieldMapping('body', 'body');
+    $this->addFieldMapping('body:format')
+        ->defaultValue('schemax_filtered_html');
 
     // Add mapping for images linked to the node
     //

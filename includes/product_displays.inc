@@ -30,6 +30,9 @@ class SchemaxMigrationSportsProductDisplays extends SchemaxMigrationSports {
     $this->addFieldMapping(NULL, 'product_display_id');
     $this->addFieldMapping('title', 'title');
     $this->addFieldMapping('body', 'body');
+    $this->addFieldMapping('body:format')
+        ->defaultValue('schemax_filtered_html');
+
     $this->addFieldMapping('field_schemax_product', 'sku');
     $this->addFieldMapping('field_schemax_catalog_category', 'category');
     $this->addFieldMapping('field_schemax_catalog_category:create_term')
