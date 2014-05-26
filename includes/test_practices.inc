@@ -41,9 +41,10 @@ class SchemaxMigrationSportsTestPractices extends SchemaxMigrationSports {
 
     // No need to apply date correction since dates are imported in local time
     //$arguments = DateMigrateFieldHandler::arguments('America/Vancouver');
-    $this->addFieldMapping('field_date', 'field_date');
+    $this->addFieldMapping('field_date', 'field_date_from');
+    $this->addFieldMapping('field_date:to', 'field_date_to');
     //    ->callbacks(array($this, 'transform_date'));
-    //    ->arguments($arguments);
+    //    ->arguments($arguments)
 
     $this->addUnmigratedDestinations(array(
       'uid',
@@ -69,9 +70,10 @@ class SchemaxMigrationSportsTestPractices extends SchemaxMigrationSports {
 
     $columns[0] = array('practice_id', 'ID');
     $columns[1] = array('practice_name', 'Practice Name');
-    $columns[2] = array('field_date', 'Date');
-    $columns[3] = array('team_id', 'TeamID');
-    $columns[4] = array('location_id', 'LocationID');
+    $columns[2] = array('field_date_from', 'Date From');
+    $columns[3] = array('field_date_to', 'Date To');
+    $columns[4] = array('team_id', 'TeamID');
+    $columns[5] = array('location_id', 'LocationID');
     return $columns;
   }
 
